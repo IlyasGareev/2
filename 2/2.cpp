@@ -5,13 +5,13 @@
 
 GLuint VBO; // нужен для хранения указателя на буфер вершин
 
-static void RenderSceneCB()
+static void RenderSceneCB() // функция отрисовки на экран
 {
     glClear(GL_COLOR_BUFFER_BIT);// очистка буфера кадра
 
-    glEnableVertexAttribArray(0);
+    glEnableVertexAttribArray(0); //индекс
     glBindBuffer(GL_ARRAY_BUFFER, VBO);// привязываем указатель к названию цели
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);//как воспринимать данные внутри буфера
 
     glDrawArrays(GL_POINTS, 0, 1);//функция для отрисовки
 
@@ -24,18 +24,18 @@ static void RenderSceneCB()
 
 static void InitializeGlutCallbacks()
 {
-    glutDisplayFunc(RenderSceneCB);
+    glutDisplayFunc(RenderSceneCB); //функция обратного вызова
 }
 
 
 static void CreateVertexBuffer()
 {
-    Vector3f Vertices[1];// создание массива из одного элемента
+    Vector3f Vertices[1];// создание массива из одного элемента типа Vector3f
     Vertices[0] = Vector3f(0.0f, 0.0f, 0.0f);//x,y,z равны 0
 
-    glGenBuffers(1, &VBO);
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);// привязываем указатель к названию цели
-    glBufferData(GL_ARRAY_BUFFER, sizeof(Vertices), Vertices, GL_STATIC_DRAW);
+    glGenBuffers(1, &VBO); //генерация объектов переменных типов с ссылкой, где будут хранится указатели
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);// привязываем указатель к названию цели, он будет хранить массив вершин
+    glBufferData(GL_ARRAY_BUFFER, sizeof(Vertices), Vertices, GL_STATIC_DRAW); //наполняем обьект данными
 }
 
 

@@ -13,7 +13,7 @@ struct Vector3f
     {
     }
 
-    Vector3f(float _x, float _y, float _z)
+    Vector3f(float _x, float _y, float _z) //установка координат точки
     {
         x = _x;
         y = _y;
